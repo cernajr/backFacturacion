@@ -1,9 +1,9 @@
-const ventaService = require('../services/ventaService');
+const pagoService = require('../services/pagoService');
 
 const getAllPago = async (req, res, next) => {
     try {
-        const venta = await ventaService.getAllPago();
-        res.status(200).json(venta);
+        const pago = await pagoService.getAllPago();
+        res.status(200).json(pago);
     } catch (error) {
         next(error);
     }
@@ -12,8 +12,8 @@ const getAllPago = async (req, res, next) => {
 const getPagoById = async (req, res, next) => {
     const id = req.params.id;
     try {
-        const venta = await ventaService.getPagoById(id);
-        res.status(200).json(venta);
+        const pago = await pagoService.getPagoById(id);
+        res.status(200).json(pago);
     } catch (error) {
         next(error);
     }
@@ -40,8 +40,8 @@ const createPago = async (req, res, next) => {
     }
 
     try {
-        const venta = await ventaService.createPago(data);
-        res.status(200).json(venta);
+        const pago = await pagoService.createPago(data);
+        res.status(200).json(pago);
     } catch (error) {
         next(error);
     }
@@ -70,8 +70,8 @@ const updatePago = async (req, res, next) => {
     }
 
     try {
-        const venta = await ventaService.updatePago(id, data);
-        res.status(200).json(venta);
+        const pago = await pagoService.updatePago(id, data);
+        res.status(200).json(pago);
     } catch (error) {
         next(error);
     }
@@ -80,8 +80,8 @@ const updatePago = async (req, res, next) => {
 const deletePago = async (req, res, next) => {
     const id = req.params.id;
     try {
-        const venta = await ventaService.deletePago(id);
-        res.status(200).json(venta);
+        const pago = await pagoService.deletePago(id);
+        res.status(200).json(pago);
     } catch (error) {
         next(error);
     }

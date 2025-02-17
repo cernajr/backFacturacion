@@ -20,6 +20,12 @@ const detalleVentaRoutes = require('./detalleVenta.routes')
 const compraRoutes = require('./compra.routes')
 const detalleCompraRoutes = require('./detalleCompra.routes')
 const pagoRoutes = require('./pago.routes')
+const cajaRoutes = require('./caja.routes')
+const movimientoCajaRoutes = require('./movimientoCaja.routes')
+const facturaRoutes = require('./factura.routes')
+const detalleFacturaRoutes = require('./detalleFactura.routes')
+const metodoPagoRoutes = require('./metodoPago.routes')
+const tipoMovimientoRoutes = require('./tipoMovimiento.routes')
 
 //creamos la ruta de la api
 router.use('/api/v1/usuario', usuarioRoutes);
@@ -37,7 +43,14 @@ router.use('/api/v1/tipoImp', tipoImpRoutes);
 router.use('/api/v1/venta', ventaRoutes);
 router.use('/api/v1/detalleVenta', detalleVentaRoutes);
 router.use('/api/v1/compra', compraRoutes);
-router.use('/api/v1/detalleCompra', detalleCompraRoutes);
+router.use('/api/v1/detalleCompra', detalleCompraRoutes)
 router.use('/api/v1/pago', pagoRoutes);
+router.use('/api/v1/caja', cajaRoutes);
+router.use('/api/v1/movimientoCaja', movimientoCajaRoutes);
+router.use('/api/v1/factura', facturaRoutes);
+router.use('/api/v1/detalleFactura', detalleFacturaRoutes);
+router.use('/api/v1/metodoPago', metodoPagoRoutes);
+router.use('/api/v1/tipoMovimiento', tipoMovimientoRoutes);
+
 
 module.exports = router;
