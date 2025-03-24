@@ -46,10 +46,20 @@ const deleteProducto = async (id) => {
     }
 }
 
+const createProductoInventario = async (data) => {
+    try {
+        const producto = await productoRepository.createProductoInventario(data)
+        return (producto) ? producto : []
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     getAllProducto,
     getProductoById,
     createProducto,
     updateProducto,
     deleteProducto,
+    createProductoInventario,
 }

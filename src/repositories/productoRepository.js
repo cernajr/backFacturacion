@@ -1,5 +1,9 @@
 const db = require('../models');
 const Productos = db.Producto;
+const Inventario = db.Inventario
+const { Op } = require('sequelize');
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require("../models");
 
 const getAllProducto = async () => {
     try {
@@ -26,6 +30,51 @@ const getProductoById = async (id) => {
 const createProducto = async (data) => {
     try {
         const producto = await Productos.create(data);
+        return producto
+    } catch (error) {
+        throw error
+    }
+}
+
+const createProductoInventario = async (data) => {
+    const transaction = await db.sequelize.transaction()
+    try {
+
+        const {
+            proveedorId,
+            unidadId,
+            categoriaId,
+            nombre,
+            descripcion,
+            precio,
+            codigoProducto,
+            estado,
+            stockActual,
+            stockMinimo,
+            stockMaximo,
+        } = data
+
+        const producto = await Productos.create({
+            proveedorId: proveedorId,
+            empresaId: 1,
+            unidadId: unidadId,
+            categoriaId: categoriaId,
+            nombre: nombre,
+            descripcion: descripcion,
+            precio: precio,
+            codigoProducto: codigoProducto,
+            estado: estado,
+        }, { transaction })
+
+        await Inventario.create({
+            productoId: producto.id,
+            empresaId: 1,
+            stockActual: stockActual,
+            stockMinimo: stockMinimo,
+            stockMaximo: stockMaximo,
+            estado: 1,
+        }, { transaction })
+
         return producto
     } catch (error) {
         throw error
@@ -63,5 +112,6 @@ module.exports = {
     getProductoById,
     createProducto,
     updateProducto,
-    deleteProducto
+    deleteProducto,
+    createProductoInventario,
 }

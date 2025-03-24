@@ -20,7 +20,7 @@ const getProductoById = async (req, res, next) => {
 }
 
 const createProducto = async (req, res, next) => {
-   
+
     const {
         proveedorId,
         empresaId,
@@ -54,7 +54,7 @@ const createProducto = async (req, res, next) => {
 }
 
 const updateProducto = async (req, res, next) => {
-    
+
     const id = req.params.id;
 
     const {
@@ -99,10 +99,48 @@ const deleteProducto = async (req, res, next) => {
     }
 }
 
+const createProductoInventario = async (req, res, next) => {
+    const {
+        proveedorId,
+        unidadId,
+        categoriaId,
+        nombre,
+        descripcion,
+        precio,
+        codigoProducto,
+        estado,
+        stockActual,
+        stockMinimo,
+        stockMaximo,
+    } = req.body;
+
+    const data = {
+        proveedorId,
+        unidadId,
+        categoriaId,
+        nombre,
+        descripcion,
+        precio,
+        codigoProducto,
+        estado,
+        stockActual,
+        stockMinimo,
+        stockMaximo,
+    }
+
+    try {
+        const producto = await productoService.createProductoInventario(data);
+        res.status(200).json(producto);
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     getAllProducto,
     getProductoById,
     createProducto,
     updateProducto,
     deleteProducto,
+    createProductoInventario,
 }
