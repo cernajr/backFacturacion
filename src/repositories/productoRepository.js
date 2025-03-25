@@ -75,8 +75,10 @@ const createProductoInventario = async (data) => {
             estado: 1,
         }, { transaction })
 
+        await transaction.commit()
         return producto
     } catch (error) {
+        await transaction.rollback()
         throw error
     }
 }

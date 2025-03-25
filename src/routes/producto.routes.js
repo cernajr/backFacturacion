@@ -9,7 +9,7 @@ const { productoValidationRules, validate } = require('../middleware/validacione
 router.get('/', productoController.getAllProducto);
 router.get('/:id', productoController.getProductoById);
 router.post('/', [productoValidationRules(), validate], productoController.createProducto);
-router.post('/', productoController.createProductoInventario);
+router.post('/productoInventario/', productoController.createProductoInventario);
 router.put('/:id', [productoValidationRules(), validate], productoController.updateProducto);
 router.delete('/:id', productoController.deleteProducto);
 
