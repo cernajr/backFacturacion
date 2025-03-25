@@ -9,7 +9,7 @@ const { inventarioValidationRules, validate } = require('../middleware/validacio
 router.get('/', inventarioController.getAllInventario);
 router.get('/:id', inventarioController.getInventarioById);
 router.post('/', [inventarioValidationRules(), validate], inventarioController.createInventario);
-router.put('/:id', [inventarioValidationRules(), validate], inventarioController.updateInventario);
+router.put('/:id', inventarioController.updateInventario);
 router.delete('/:id', inventarioController.deleteInventario);
 
 module.exports = router;
