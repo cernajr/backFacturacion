@@ -36,7 +36,7 @@ const updateInventario = async (id, data) => {
     try {
         const inventario = await Inventarios.update(data, {
             where: {
-                id: id
+                productoId: id
             }
         })
         return inventario
