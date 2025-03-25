@@ -52,21 +52,11 @@ const updateInventario = async (req, res, next) => {
     const id = req.params.id;
 
     const {
-        productoId,
-        empresaId,
         stockActual,
-        stockMinimo,
-        stockMaximo,
-        estado
     } = req.body;
 
     const data = {
-        productoId,
-        empresaId,
         stockActual,
-        stockMinimo,
-        stockMaximo,
-        estado
     }
 
     try {
