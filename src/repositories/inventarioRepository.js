@@ -14,7 +14,7 @@ const getInventarioById = async (id) => {
     try {
         const inventario = await Inventarios.findOne({
             where: {
-                id: id
+                productoId: id
             }
         })
         return inventario
