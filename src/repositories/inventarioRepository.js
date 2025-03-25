@@ -34,7 +34,19 @@ const createInventario = async (data) => {
 
 const updateInventario = async (id, data) => {
     try {
-        const inventario = await Inventarios.update(data, {
+        const { stockActual } = data
+
+        const oldStock = Inventarios.findOne({
+            where: {
+                productoId: id
+            }
+        })
+
+        const newStock = oldStock.stockActual + stockActual
+
+        const inventario = await Inventarios.update({
+            stockActual: newStock
+        }, {
             where: {
                 productoId: id
             }
