@@ -1,9 +1,17 @@
 const db = require('../models');
 const Usuarios = db.Usuario;
+const { sequelize } = require("../models")
+const { QueryTypes, Transaction, } = require('sequelize')
 
 const getAllUsuario = async () => {
     try {
-        const usuario = await Usuarios.findAll();
+        const sql = `select us.*, r.descripcion as nombreRol from usuarios as us
+                     inner join rols as r on us.rolId = r.id`
+
+        const usuario = await sequelize.query(sql, {
+            type: QueryTypes.SELECT
+        })
+
         return usuario
     } catch (error) {
         throw error
