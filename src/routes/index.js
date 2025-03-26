@@ -26,6 +26,7 @@ const facturaRoutes = require('./factura.routes')
 const detalleFacturaRoutes = require('./detalleFactura.routes')
 const metodoPagoRoutes = require('./metodoPago.routes')
 const tipoMovimientoRoutes = require('./tipoMovimiento.routes')
+const reporteRoutes = require('./reporte.routes')
 
 //creamos la ruta de la api
 router.use('/api/v1/usuario', usuarioRoutes);
@@ -51,6 +52,6 @@ router.use('/api/v1/factura', facturaRoutes);
 router.use('/api/v1/detalleFactura', detalleFacturaRoutes);
 router.use('/api/v1/metodoPago', metodoPagoRoutes);
 router.use('/api/v1/tipoMovimiento', tipoMovimientoRoutes);
-
+router.use('/api/v1/reporte', reporteRoutes);
 
 module.exports = router;
