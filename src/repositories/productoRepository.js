@@ -7,7 +7,22 @@ const { sequelize } = require("../models");
 
 const getAllProducto = async () => {
     try {
-        const producto = await Productos.findAll();
+        const sql = `SELECT productos.id,
+                         productos.proveedorId,
+                         productos.empresaId,
+                         productos.unidadId,
+                         productos.categoriaId,
+                         productos.nombre,
+                         productos.descripcion,
+                         productos.precio as precio_venta,
+                         productos.codigoProducto,
+                         productos.estado,
+                         inventarios.stockActual as stock
+                     FROM productos
+                     inner join inventarios on inventarios.productoId = productos.id;`
+        const producto = await sequelize.query(sql, {
+            type: QueryTypes.SELECT
+        })
         return producto
     } catch (error) {
         throw error
