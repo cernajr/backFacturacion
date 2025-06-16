@@ -27,6 +27,8 @@ const detalleFacturaRoutes = require('./detalleFactura.routes')
 const metodoPagoRoutes = require('./metodoPago.routes')
 const tipoMovimientoRoutes = require('./tipoMovimiento.routes')
 const reporteRoutes = require('./reporte.routes')
+const authRoutes = require('./auth.routes');
+const dashboardRoutes = require('./dashboard.routes');
 
 //creamos la ruta de la api
 router.use('/api/v1/usuario', usuarioRoutes);
@@ -53,5 +55,7 @@ router.use('/api/v1/detalleFactura', detalleFacturaRoutes);
 router.use('/api/v1/metodoPago', metodoPagoRoutes);
 router.use('/api/v1/tipoMovimiento', tipoMovimientoRoutes);
 router.use('/api/v1/reporte', reporteRoutes);
+router.use('/api/v1/auth', authRoutes);
+router.use('/api/dashboard', dashboardRoutes);
 
 module.exports = router;
